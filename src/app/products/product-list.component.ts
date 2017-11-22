@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 
+import { ProductService } from './product.service';
+
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
@@ -23,11 +25,9 @@ export class ProductListComponent implements OnInit {
   }
 
   filteredProducts: IProduct[];
-  products: IProduct[] = ;
+  products: IProduct[] = [];
 
-  constructor() {
-    this.filteredProducts = this.products;
-    this.listFilter = 'cart';
+  constructor(private _productService: ProductService) {
   }
 
   onRatingClicked(message: string): void {
@@ -45,5 +45,9 @@ export class ProductListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
 
-  ngOnInit(): void { console.log('In OnInit'); }
+  ngOnInit(): void {
+    this.products = this._productService.getProducts();
+    this.filteredProducts = this.products;
+
+  }
 }
