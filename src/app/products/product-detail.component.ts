@@ -31,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
             "starRating": 3.2,
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
         }
+
         //Add http logic for getting the product with matching id.
 
     }
